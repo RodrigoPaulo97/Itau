@@ -1,0 +1,62 @@
+<section class="container">
+    <div class="page-header">
+        <div class="page-header-title">
+            <h1>Polos {{$value('name')}}</h1>
+            <span>exibindo detalhes do polo {{$value('name')}}#{{$value('id')}}</span>
+        </div>
+    </div>
+    <form [formGroup]="form">
+        <label class="form-title">Detalhes do endereço</label>
+        <div class="row">
+            <div class="col-6 col-md-4 col-lg-2">
+                <mat-form-field appearance="outline">
+                    <mat-label>CEP</mat-label>
+                    <input mask="00000-000" matInput formControlName="cep" >
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-md-8 col-lg-10">
+                <app-cep [cep]="$value('cep')"></app-cep>
+            </div>
+        </div>
+        <label class="form-title">Detalhes do endereço</label>
+        <div class="row">
+            <div class="col-12 col-md-4 col-lg-2">
+                <mat-form-field appearance="outline">
+                    <mat-label>Nome</mat-label>
+                    <input matInput formControlName="name" >
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-md-4 col-lg-2">
+                <mat-form-field appearance="outline">
+                    <mat-label>Business</mat-label>
+                    <input matInput formControlName="business" >
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-md-4 col-lg-2">
+                <mat-form-field appearance="outline">
+                    <mat-label>Valuation</mat-label>
+                    <input matInput formControlName="valuation"  currencyMask  [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',',align: 'left' }">
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-md-4 col-lg-2">
+                <mat-form-field appearance="outline">
+                    <mat-label>CNPJ</mat-label>
+                    <input matInput formControlName="cnpj" mask="00.000.000/0000-00" prefixed>
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-md-4 col-lg-2">
+                <mat-form-field appearance="outline">
+                    <mat-label>Ativo?</mat-label>
+                    <mat-select formControlName="active" >
+                        <mat-option [value]="true">Sim</mat-option>
+                        <mat-option [value]="false">Não</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div>
+            <button mat-button class="btn-return" (click)="back()">Voltar</button>
+            <button mat-button class="btn-save" (click)="saveForm()">Salvar</button>
+        </div>
+    </form>
+</section>

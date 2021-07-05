@@ -1,0 +1,54 @@
+<app-navbar></app-navbar>
+<section class="container" *ngIf="!registerSelect.id">
+    <div class="page-header">
+        <div class="page-header-title">
+            <h1>Polos Itaú</h1>
+            <span>confira abaixo alguns dos principais polos do itaú</span>
+        </div>
+        <mat-form-field appearance="outline" class="input-filter">
+            <mat-label>Pesquisar</mat-label>
+            <input #search (keyup)="filterTable(search.value)" matInput placeholder="Pesquisar...">
+          </mat-form-field>
+    </div>
+    <div class="body-table">
+            <table  mat-table [dataSource]="dataSource" matSort>
+    
+                <ng-container matColumnDef="name">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome</th>
+                  <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container>
+              
+                <ng-container matColumnDef="business">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Business </th>
+                  <td mat-cell *matCellDef="let element"> {{element.business}} </td>
+                </ng-container>
+                <ng-container matColumnDef="valuation">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Valuation </th>
+                  <td mat-cell *matCellDef="let element"> {{element.valuation | currency : 'BRL'}} </td>
+                </ng-container>
+              
+                <ng-container matColumnDef="active">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Situação </th>
+                  <td mat-cell *matCellDef="let element"> 
+                      <span [matTooltip]="element.active ? 'Ativo' : 'Inativo'" style="font-size: 2em;" class="{{element.active ? 'text-success': 'text-danger'}}">
+                          &#9679;
+                      </span>
+                     </td>
+                </ng-container>
+              
+                <ng-container matColumnDef="acao">
+                  <th mat-header-cell *matHeaderCellDef style="width: 10px;text-align: center;"> Ação </th>
+                  <td mat-cell *matCellDef="let element">
+                    <button mat-button (click)="viewRegister(element)"><mat-icon>visibility</mat-icon></button>      
+                </td>
+                </ng-container>
+              
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+              <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+      
+    </div>
+   
+</section>
+<app-polos-register *ngIf="registerSelect.id" [register]="registerSelect" (close)="ngOnInit()"></app-polos-register>

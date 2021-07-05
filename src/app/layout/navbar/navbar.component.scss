@@ -1,0 +1,49 @@
+nav {
+    background   : var(--primary-light);
+    border-bottom: 3px solid var(--primary);
+    height       : var(--height-nav);
+    width        : 100%;
+    display      : flex;
+    align-items  : center;
+    .container{
+        height: auto!important;
+    }
+    .logo {}
+
+    .info-user {
+        position   : absolute;
+        display    : flex;
+        right      : 1em;
+        align-items: center;
+
+        .language {
+            border-right: 2px solid;
+            font-size   : 1.5em;
+            padding     : 0 1em;
+            height      : 45px;
+            text-align  : center;
+            line-height : 2;
+        }
+
+        .user {
+            display        : flex;
+            width          : auto;
+            justify-content: space-between;
+
+            .avatar {
+                width              : 50px;
+                height             : 50px;
+                margin             : 0 1em;
+                background-size    : 115%, cover !important;
+                background-position: center, bottom !important;
+                border-radius      : 100%;
+            }
+
+            .arrow-bottom {
+                align-items: center;
+                display    : flex;
+                cursor     : pointer;
+            }
+        }
+    }
+}

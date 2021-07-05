@@ -1,0 +1,22 @@
+<nav>
+    <div class="container d-flex position-relative align-items-center">
+        <div class="logo">
+            <img src="assets/logo.png" alt="">
+        </div>
+        <div class="info-user">
+            <div class="language">
+                PT
+            </div>
+            <div class="user">
+                <div class="avatar" [ngStyle]="user.img">
+                </div>
+                <div class="noMobile">
+                    <div style="font-weight: 600;" [matTooltip]="user.name">{{reduceName(user.name)}}</div>
+                    <div>{{user.typeUser}}</div>
+                </div>
+                <div class="arrow-bottom"><mat-icon class="mat-18">expand_more</mat-icon></div>
+            </div>
+        </div>
+    </div>
+
+</nav>
